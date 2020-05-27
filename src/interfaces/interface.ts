@@ -1,3 +1,5 @@
+import { yesterday, sort } from '../types';
+
 export interface All {
 	updated: number;
 	cases: number;
@@ -19,6 +21,23 @@ export interface All {
 }
 
 export interface AllOptions {
-	yesterday: 1 | 0 | boolean;
+	yesterday: yesterday;
 	allowNull: boolean;
 }
+
+export interface Continents {
+	continent: string;
+	updated: number;
+	cases: number;
+	todayCases: number;
+	deaths: number;
+	todayDeaths: number;
+	recovered: number;
+	active: number;
+	critical: number;
+}
+
+export interface ContinentsOptions extends AllOptions {
+	sort: sort;
+}
+

@@ -1,27 +1,29 @@
-import fetch, { Response } from 'node-fetch';
-import { All, AllOptions } from './interfaces/interface';
-import { apis } from './types/types';
+import CovidStats from './CovidStats';
 
-const json = (res: Response) => res.json();
+import {
+	All,
+	AllOptions,
+	Continents,
+	ContinentsOptions
+} from './interfaces';
 
-export class CovidStats {
-
-	public baseURL: string;
-
-	public constructor(api: apis = 'https://disease.sh') {
-
-		this.baseURL = `${api}/v2`;
-	}
-
-	async all(options?: Partial<AllOptions>): Promise<All> {
-		if (options) {
-			return fetch(`${this.baseURL}/all?yesterday=${options.yesterday}&allowNull=${options.allowNull}`)
-				.then(json);
-		}
-		return fetch(`${this.baseURL}/all`)
-			.then(json);
-
-	}
-}
+import {
+	sort,
+	yesterday,
+	apis
+} from './types';
 
 export default CovidStats;
+
+export {
+	CovidStats,
+
+	All,
+	AllOptions,
+	Continents,
+	ContinentsOptions,
+
+	sort,
+	yesterday,
+	apis
+};
